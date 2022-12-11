@@ -2,10 +2,8 @@ package api;
 
 import api.models.Data;
 import io.restassured.RestAssured;
-import io.restassured.http.Header;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
-import io.restassured.http.Headers;
 
 import java.util.List;
 
@@ -37,9 +35,41 @@ public class JsonHomeWork {
 
         String locationHeader = response.getHeader("Location");
         System.out.println(locationHeader);
-
     }
+
+    @Test
+    public void testLongRedicts() {
+        String url = "https://playground.learnqa.ru/api/long_redirect";
+        int count = 0;
+
+        Response response;
+        do {
+            response = RestAssured
+                    .given()
+                    .redirects()
+                    .follow(false)
+                    .when()
+                    .get(url)
+                    .thenReturn();
+            url = response.getHeader("Location");
+            count++;
+        } while (response.statusCode() != 200);
+
+        System.out.println(count - 1);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

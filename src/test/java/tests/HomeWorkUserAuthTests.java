@@ -22,7 +22,8 @@ public class HomeWorkUserAuthTests {
                 .andReturn();
 
         Map<String, String> cookies = responseGetCookies.getCookies();
-        System.out.println(responseGetCookies.getCookie("HomeWork"));
+        String cookie = responseGetCookies.getCookie("HomeWork");
+        System.out.println(cookie);
         assertTrue(cookies.containsKey("HomeWork"),"Response without 'HomeWork' cookie");
     }
 

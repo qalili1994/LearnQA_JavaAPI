@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AssertHomeWork {
     @ParameterizedTest
-    @ValueSource(strings= {"qqqqqqqqqqqqqqqqq", "qwwwwwwwwqq"})
+    @ValueSource(strings= {"qqqqqqqqqqqqqqqqq", "qwwwwwwwqq"})
     public void test(String strings) {
         assertTrue(strings.length() > 15, "length < 15 symbol");
     }

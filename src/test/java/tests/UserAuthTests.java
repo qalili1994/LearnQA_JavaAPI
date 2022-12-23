@@ -3,9 +3,7 @@ package tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import lib.BaseTestKeys;
 import lib.Assertions;
 import lib.ApiCoreRequests;
@@ -16,7 +14,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashMap;
 import java.util.Map;
-import static io.restassured.RestAssured.given;
 
 @Epic("Authorization cases")
 @Feature("Authorization")
@@ -26,6 +23,7 @@ import static io.restassured.RestAssured.given;
         String cookie;
         String header;
         int userIdOnAuth;
+
         private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
         @BeforeEach
@@ -46,7 +44,6 @@ import static io.restassured.RestAssured.given;
         @Description("This test successfully authorize user by email and password")
         @DisplayName("Test positive auth user")
         public void testAuthUser() {
-
             Response responseCheckAuth = apiCoreRequests
                     .makeGetRequest(
                             "https://playground.learnqa.ru/api/user/auth",

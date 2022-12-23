@@ -1,10 +1,18 @@
 package lib;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.params.provider.Arguments;
+
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.stream.Stream;
 
 public class DataGenerator {
+    public static String longName = RandomStringUtils.randomAlphabetic(251);
+    public static String shortName = RandomStringUtils.randomAlphabetic(1);
+
     public static String getRandomEmail() {
         String timestamp = new SimpleDateFormat("yyyMMddHHmmss").format(new java.util.Date());
         return "learnqa" + timestamp + "@example.ru";
@@ -35,4 +43,5 @@ public class DataGenerator {
         }
         return userData;
     }
+
 }

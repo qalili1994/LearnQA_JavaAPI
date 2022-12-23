@@ -42,6 +42,8 @@ public class ApiCoreRequests {
                 .filter(new AllureRestAssured())
                 .body(authData)
                 .post(url)
+                .prettyPeek()
                 .andReturn();
     }
+
 }

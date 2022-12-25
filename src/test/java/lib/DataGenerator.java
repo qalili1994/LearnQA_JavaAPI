@@ -44,4 +44,19 @@ public class DataGenerator {
         return userData;
     }
 
+    public static Map<String, String> getRegistrationDataDelete(Map<String, String> nonDefaultValues) {
+        Map<String, String> defaultValues = DataGenerator.getRegistrationData();
+
+        Map<String, String> userData = new HashMap<>();
+        String[] keys = {"email", "password", "username", "lastName", "firstName"};
+        for (String key : keys) {
+            if (nonDefaultValues.containsKey(key)) {
+                userData.remove(key, nonDefaultValues.get(key));
+            } else {
+                userData.put(key, defaultValues.get(key));
+            }
+        }
+        return userData;
+    }
+
 }

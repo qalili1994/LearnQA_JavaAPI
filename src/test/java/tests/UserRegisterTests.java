@@ -77,6 +77,21 @@ public class UserRegisterTests extends BaseTestKeys {
 
     @ParameterizedTest
     @MethodSource("getNames")
+    public void testCreateUserWithoutOneField(String params, String name) {
+
+        Map<String, String> userData = new HashMap<>();
+        userData.put(params, name);
+        userData = DataGenerator.getRegistrationDataDelete(userData);
+
+        Response responseCreate = apiCoreRequests
+                .makePostRequest("https://playground.learnqa.ru/api/user", userData);
+
+        Assertions.assertResponseStatusCode(responseCreate, 400);
+        Assertions.assertResponseTextEquals(responseCreate, "The following required params are missed: " + params);
+    }
+
+    @ParameterizedTest
+    @MethodSource("getNames")
     public void testCreateUserWithoutParam(String params, String name) {
 
         Map<String, String> userData = new HashMap<>();

@@ -98,7 +98,7 @@ public class UserEditTest extends BaseTestKeys {
         authData.put("password", userData.get("password"));
 
         Response responseGetAuth = apiCoreRequests
-                .makePostRequest("https://playground.learnqa.ru/api/user/login", userData);
+                .makePostRequest("https://playground.learnqa.ru/api/user/login", authData);
 
         //edit
         String newName = "Changed Name";
@@ -138,7 +138,7 @@ public class UserEditTest extends BaseTestKeys {
         authData.put("password", userData.get("password"));
 
         Response responseGetAuth = apiCoreRequests
-                .makePostRequest("https://playground.learnqa.ru/api/user/login", userData);
+                .makePostRequest("https://playground.learnqa.ru/api/user/login", authData);
 
         //edit
         String mail = "Changedmail.ru";
@@ -171,7 +171,7 @@ public class UserEditTest extends BaseTestKeys {
         authData.put("password", userData.get("password"));
 
         Response responseGetAuth = apiCoreRequests
-                .makePostRequest("https://playground.learnqa.ru/api/user/login", userData);
+                .makePostRequest("https://playground.learnqa.ru/api/user/login", authData);
 
         //edit
         Map<String, String> editData = new HashMap<>();

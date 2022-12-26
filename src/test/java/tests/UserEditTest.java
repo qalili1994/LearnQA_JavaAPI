@@ -1,5 +1,8 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Issue;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -7,6 +10,7 @@ import lib.Assertions;
 import lib.BaseTestKeys;
 import lib.DataGenerator;
 import lib.ApiCoreRequests;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -23,6 +27,10 @@ public class UserEditTest extends BaseTestKeys {
     Map<String, String> userData = DataGenerator.getRegistrationData();
 
     @Test
+    @Description("This test edit user")
+    @DisplayName("Test edit user")
+    @Issue("https://jira.home.work/browse/HB-332293")
+    @Epic("2.6.0")
     public void testEditJustCreatedTest() {
         //generate user
 
@@ -70,6 +78,10 @@ public class UserEditTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test tries to edit user unathourized")
+    @DisplayName("Test tries to edit")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testEditUnauthorized() {
 
         Response responseEditUser = apiCoreRequests.
@@ -84,6 +96,10 @@ public class UserEditTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test tries to edit other user")
+    @DisplayName("Test tries to delete other user")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testEditAsDifferentUser() {
         //generate user
         Response responseCreateAuth = apiCoreRequests
@@ -124,6 +140,10 @@ public class UserEditTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test edit email without @")
+    @DisplayName("Test edit mail whothut @")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testEditMailWithoutAt() {
         //generate user
         Response responseCreateAuth = apiCoreRequests
@@ -157,6 +177,10 @@ public class UserEditTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test edit name")
+    @DisplayName("This test edit name")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testEditFirstNameShort() {
         //generate user
         Response responseCreateAuth = apiCoreRequests

@@ -1,10 +1,14 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Issue;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
 import lib.Assertions;
 import lib.BaseTestKeys;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +17,10 @@ public class UserGetTest extends BaseTestKeys {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
     @Test
+    @Description("This test get data without auth")
+    @DisplayName("This test get data without auth")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testGetUserDataNotAuth(){
         Response responseUserData = RestAssured
                 .get("https://playground.learnqa.ru/api/user/2")
@@ -25,6 +33,10 @@ public class UserGetTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test get details")
+    @DisplayName("This test get details")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testGetUserDetailsAuthAsSameUser() {
         Map<String, String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");
@@ -52,6 +64,10 @@ public class UserGetTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test tries to get details with different user")
+    @DisplayName("This test get details")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testGetUserDetailsAuthAsDifferentUser() {
         Map<String, String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");

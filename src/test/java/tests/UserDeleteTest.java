@@ -1,5 +1,8 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Issue;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -7,6 +10,8 @@ import lib.Assertions;
 import lib.BaseTestKeys;
 import lib.DataGenerator;
 import lib.ApiCoreRequests;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -20,6 +25,10 @@ public class UserDeleteTest extends BaseTestKeys {
     Map<String, String> userData = DataGenerator.getRegistrationData();
 
     @Test
+    @Description("This test tries to delete user 2")
+    @DisplayName("Test delete user 2")
+    @Issue("https://jira.home.work/browse/HB-3393")
+    @Epic("2.6.0")
     public void testDeleteUserId2() {
         //login
         Map<String, String> authData = new HashMap<>();
@@ -41,6 +50,10 @@ public class UserDeleteTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test delete user")
+    @DisplayName("Test delete user")
+    @Issue("https://jira.home.work/browse/HB-3323")
+    @Epic("2.6.0")
     public void testDeleteUser() {
         //generate user
         Response responseCreateAuth = apiCoreRequests
@@ -76,6 +89,10 @@ public class UserDeleteTest extends BaseTestKeys {
     }
 
     @Test
+    @Description("This test delete user with")
+    @DisplayName("Test tries to delete other user")
+    @Issue("https://jira.home.work/browse/HB-33293")
+    @Epic("2.6.0")
     public void testDeleteOtherUser() {
         //generate user
         Response responseCreateAuth = apiCoreRequests

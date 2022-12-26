@@ -41,6 +41,15 @@ public class Assertions {
                 "Response text is not as expected"
         );
     }
+
+    public static void assertResponseTextNotEquals(Response Response, String expectedAnswer){
+        assertNotEquals(
+                expectedAnswer,
+                Response.asString(),
+                "Response text is the same"
+        );
+    }
+
     public static void assertResponseFieldNotEquals(Response Response,String name, String expectedValue){
         Response.then().assertThat().body("$",hasKey(name));
 

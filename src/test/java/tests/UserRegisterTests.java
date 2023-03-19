@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+
 public class UserRegisterTests extends BaseTestKeys {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();

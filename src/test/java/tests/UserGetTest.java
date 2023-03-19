@@ -17,7 +17,7 @@ public class UserGetTest extends BaseTestKeys {
 
     private final ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
     @Test
-    @Description("This test get data without auth")
+    @Description("This 122test get data without auth")
     @DisplayName("This test get data without auth")
     @Issue("https://jira.home.work/browse/HB-33293")
     @Epic("2.6.0")
@@ -47,7 +47,7 @@ public class UserGetTest extends BaseTestKeys {
                 .body(authData)
                 .when()
                 .post("https://playground.learnqa.ru/api/user/login")
-                .andReturn();
+                .andReturn();1
 
         String header = this.getHeader(responseGetAuth, "x-csrf-token");
         String cookie = this.getCookie(responseGetAuth, "auth_sid");
